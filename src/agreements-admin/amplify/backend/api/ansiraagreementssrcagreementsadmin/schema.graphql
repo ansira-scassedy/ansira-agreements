@@ -1,0 +1,35 @@
+type Agreements @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  signer_name: String
+  signer_email: AWSEmail
+  signed: Boolean
+  signed_date: AWSDateTime
+  creater_email: AWSEmail
+  notification_list: AWSJSON
+  created: AWSDateTime
+  updated: AWSDateTime
+  document_id: ID! @index(name: "byDocuments")
+  registered_app_id: ID! @index(name: "byRegisteredApps")
+}
+
+type Documents @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  source_document: AWSURL
+  agreement_image: AWSURL
+  created_by: AWSEmail
+  created: AWSDateTime
+  updated: AWSDateTime
+  registered_app_id: ID! @index(name: "byRegisteredApps")
+  Agreements: [Agreements] @hasMany(indexName: "byDocuments", fields: ["id"])
+}
+
+type RegisteredApps @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  api_key: String
+  created_by: AWSEmail
+  created: AWSDateTime
+  Documents: [Documents] @hasMany(indexName: "byRegisteredApps", fields: ["id"])
+  Agreements: [Agreements] @hasMany(indexName: "byRegisteredApps", fields: ["id"])
+}

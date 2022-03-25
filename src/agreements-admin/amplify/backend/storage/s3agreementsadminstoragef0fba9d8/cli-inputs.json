@@ -1,0 +1,12 @@
+{
+  "resourceName": "s3agreementsadminstoragef0fba9d8",
+  "bucketName": "agreements-admin-storage-f0fba9d8",
+  "policyUUID": "2afb25de",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

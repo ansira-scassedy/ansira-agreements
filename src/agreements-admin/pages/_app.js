@@ -1,7 +1,11 @@
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
+import Amplify, { API, graphqlOperation } from 'aws-amplify';
+import awsconfig from './aws-exports';
+Amplify.configure({awsconfig, ssr: true});
+
+function AnsiraAgreementsAdmin({ Component, pageProps }) {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default AnsiraAgreementsAdmin

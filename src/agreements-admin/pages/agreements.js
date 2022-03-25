@@ -2,21 +2,28 @@ import Head from 'next/head'
 
 import AdminLayout from '../components/layout/admin'
 
-import { DataStore } from '@aws-amplify/datastore';
-import { Agreements } from '../models';
 
+// amplify stuff
+import { Amplify, API } from "aws-amplify";
+import awsExports from "../src/aws-exports";
+
+Amplify.configure({ ...awsExports, ssr: true });
+
+import { Agreement } from '../models';
+// end amplify 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-async function Getagreements () {
-  const models = await (await DataStore.query(Agreements)).map(agreement => ({}));
-  console.log(models);
-}
+// async function Getagreements () {
+//   const models = await (await DataStore.query(Agreements)).map(agreement => ({}));
+//   console.log(models);
+// }
+// let agreementData = Getagreements();
 
-export default function Home() {
-let agreementData = Getagreements();
+export default function Agreements() {
+
 
   return (
 
@@ -24,7 +31,7 @@ let agreementData = Getagreements();
       <main>
         <div className="py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+            <h1 className="text-2xl font-semibold text-gray-900">Agreements</h1>
           </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
             {/* Replace with your content */}
