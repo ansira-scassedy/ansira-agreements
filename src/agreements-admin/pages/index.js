@@ -2,33 +2,15 @@ import Head from 'next/head'
 import { useState, useEffect } from 'react'
 
 import AdminLayout from '../components/layout/admin'
-import { Amplify } from "aws-amplify";
-import awsExports from "../aws-exports";
-
-Amplify.configure({ ...awsExports, ssr: true });
-
-// import { DataStore } from '@aws-amplify/datastore';
-// import { Agreements } from '../models';
 
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-// async function Getagreements () {
-//   const models = await (await DataStore.query(Agreements)).map(agreement => ({}));
-//   console.log(models);
-// }
-// let agreementData = Getagreements();
 
-export default function Home({ posts = [] }) {
-  const [posts, setPosts] = useState(posts);
-  useEffect(() => {
-    // 👇 Notice how the client correctly uses the top-level `API` import
-    API.graphql({ query: listAgreements }).then(({ data }) => setPosts(data.listAgreements.items));
-  }, [])
 
-  console.log(posts)
+export default function Home() {
 
   return (
 

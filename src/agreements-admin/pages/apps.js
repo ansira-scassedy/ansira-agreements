@@ -1,22 +1,29 @@
 import Head from 'next/head'
+import { useState, useEffect } from 'react'
 
 import AdminLayout from '../components/layout/admin'
 
+
+//amplify stuff
 import { DataStore } from '@aws-amplify/datastore';
 import { AppRegistry } from '../models';
-
+//
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-async function Getagreements () {
-  const models = await (await DataStore.query(AppRegistry)).map(app => ({}));
-  console.log(models);
-}
-
 export default function Apps() {
-let appData = Getagreements();
+  const [apps, setapps] = useState([])
+  useEffect(() => {
+    fetchApps()
+    async function fetchApps() {
+      const appData = await DataStore.query(AppRegistry)
+      setapps(appData)
+    } 
+    const subscription = DataStore.observe(AppRegistry).subscribe(() => fetchApps())
+    return () => subscription.unsubscribe()
+  }, [])
 
   return (
 
@@ -27,11 +34,11 @@ let appData = Getagreements();
             <h1 className="text-2xl font-semibold text-gray-900">Apps</h1>
           </div>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            {/* Replace with your content */}
-            <div className="py-4">
-              <div className="border-4 border-dashed border-gray-200 rounded-lg h-96" />
-            </div>
-            {/* /End replace */}
+          {
+          apps.map(apps => (
+            <p key={apps.id}>{apps.name}</p>
+        ))
+      }
           </div>
         </div>
       </main>
