@@ -4,62 +4,72 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type AgreementsMetaData = {
+type EventLogMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type DocumentsMetaData = {
+type AgreementMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-type RegisteredAppsMetaData = {
+type DocumentMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Agreements {
-  readonly id: string;
-  readonly signer_name?: string;
-  readonly signer_email?: string;
-  readonly signed?: boolean;
-  readonly signed_date?: string;
-  readonly creater_email?: string;
-  readonly notification_list?: string;
-  readonly created?: string;
-  readonly updated?: string;
-  readonly document_id: string;
-  readonly registered_app_id: string;
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<Agreements, AgreementsMetaData>);
-  static copyOf(source: Agreements, mutator: (draft: MutableModel<Agreements, AgreementsMetaData>) => MutableModel<Agreements, AgreementsMetaData> | void): Agreements;
+type AppRegistryMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Documents {
+export declare class EventLog {
   readonly id: string;
-  readonly name?: string;
-  readonly source_document?: string;
-  readonly agreement_image?: string;
-  readonly created_by?: string;
-  readonly created?: string;
-  readonly updated?: string;
-  readonly registered_app_id: string;
-  readonly Agreements?: (Agreements | null)[];
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<Documents, DocumentsMetaData>);
-  static copyOf(source: Documents, mutator: (draft: MutableModel<Documents, DocumentsMetaData>) => MutableModel<Documents, DocumentsMetaData> | void): Documents;
+  readonly Event?: string | null;
+  readonly Request?: string | null;
+  readonly Response?: string | null;
+  readonly description?: string | null;
+  readonly appregistryID: string;
+  readonly agreementID: string;
+  readonly documentID: string;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<EventLog, EventLogMetaData>);
+  static copyOf(source: EventLog, mutator: (draft: MutableModel<EventLog, EventLogMetaData>) => MutableModel<EventLog, EventLogMetaData> | void): EventLog;
 }
 
-export declare class RegisteredApps {
+export declare class Agreement {
   readonly id: string;
-  readonly name?: string;
-  readonly api_key?: string;
-  readonly created_by?: string;
-  readonly created?: string;
-  readonly Documents?: (Documents | null)[];
-  readonly Agreements?: (Agreements | null)[];
-  readonly createdAt?: string;
-  readonly updatedAt?: string;
-  constructor(init: ModelInit<RegisteredApps, RegisteredAppsMetaData>);
-  static copyOf(source: RegisteredApps, mutator: (draft: MutableModel<RegisteredApps, RegisteredAppsMetaData>) => MutableModel<RegisteredApps, RegisteredAppsMetaData> | void): RegisteredApps;
+  readonly vendorId?: string | null;
+  readonly status?: string | null;
+  readonly EventLogs?: (EventLog | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Agreement, AgreementMetaData>);
+  static copyOf(source: Agreement, mutator: (draft: MutableModel<Agreement, AgreementMetaData>) => MutableModel<Agreement, AgreementMetaData> | void): Agreement;
+}
+
+export declare class Document {
+  readonly id: string;
+  readonly vendorId?: string | null;
+  readonly path?: string | null;
+  readonly status?: string | null;
+  readonly appregistryID: string;
+  readonly Agreement?: Agreement | null;
+  readonly EventLogs?: (EventLog | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly documentAgreementId?: string | null;
+  constructor(init: ModelInit<Document, DocumentMetaData>);
+  static copyOf(source: Document, mutator: (draft: MutableModel<Document, DocumentMetaData>) => MutableModel<Document, DocumentMetaData> | void): Document;
+}
+
+export declare class AppRegistry {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly description?: string | null;
+  readonly createdBy?: string | null;
+  readonly Documents?: (Document | null)[] | null;
+  readonly EventLogs?: (EventLog | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<AppRegistry, AppRegistryMetaData>);
+  static copyOf(source: AppRegistry, mutator: (draft: MutableModel<AppRegistry, AppRegistryMetaData>) => MutableModel<AppRegistry, AppRegistryMetaData> | void): AppRegistry;
 }

@@ -1,20 +1,15 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-amplifyc05d76a7480a4-staging-20123-authRole",
-      "UnauthRoleArn": "arn:aws:iam::290857385602:role/amplify-amplifyc05d76a7480a4-staging-20123-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::290857385602:role/amplify-amplifyc05d76a7480a4-staging-20123-authRole",
+      "AuthRoleName": "amplify-ansiraagreement-staging-211337-authRole",
+      "UnauthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreement-staging-211337-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreement-staging-211337-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-amplifyc05d76a7480a4-staging-20123-deployment",
-      "UnauthRoleName": "amplify-amplifyc05d76a7480a4-staging-20123-unauthRole",
-      "StackName": "amplify-amplifyc05d76a7480a4-staging-20123",
-      "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-amplifyc05d76a7480a4-staging-20123/d59f2da0-95de-11ec-9317-060f66cee464",
-      "AmplifyAppId": "d20nrwjmkond4b"
-    },
-    "categories": {
-      "auth": {
-        "ansiraagreementssrcagreementsadmin": {}
-      }
+      "DeploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
+      "UnauthRoleName": "amplify-ansiraagreement-staging-211337-unauthRole",
+      "StackName": "amplify-ansiraagreement-staging-211337",
+      "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreement-staging-211337/932557b0-c4dc-11ec-9e83-02591c40173c",
+      "AmplifyAppId": "d9xogi9iji5r3"
     }
   }
 }

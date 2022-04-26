@@ -3,7 +3,7 @@ import Head from 'next/head'
 import AdminLayout from '../components/layout/admin'
 
 import { DataStore } from '@aws-amplify/datastore';
-import { Agreements } from '../models';
+import { AppRegistry } from '../models';
 
 
 function classNames(...classes) {
@@ -11,12 +11,12 @@ function classNames(...classes) {
 }
 
 async function Getagreements () {
-  const models = await (await DataStore.query(Agreements)).map(agreement => ({}));
+  const models = await (await DataStore.query(AppRegistry)).map(app => ({}));
   console.log(models);
 }
 
 export default function Apps() {
-let agreementData = Getagreements();
+let appData = Getagreements();
 
   return (
 

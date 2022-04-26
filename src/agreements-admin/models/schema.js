@@ -1,7 +1,7 @@
 export const schema = {
     "models": {
-        "Agreements": {
-            "name": "Agreements",
+        "EventLog": {
+            "name": "EventLog",
             "fields": {
                 "id": {
                     "name": "id",
@@ -10,75 +10,161 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "signer_name": {
-                    "name": "signer_name",
+                "Event": {
+                    "name": "Event",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "signer_email": {
-                    "name": "signer_email",
+                "Request": {
+                    "name": "Request",
                     "isArray": false,
-                    "type": "AWSEmail",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "signed": {
-                    "name": "signed",
+                "Response": {
+                    "name": "Response",
                     "isArray": false,
-                    "type": "Boolean",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "signed_date": {
-                    "name": "signed_date",
+                "description": {
+                    "name": "description",
                     "isArray": false,
-                    "type": "AWSDateTime",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "creater_email": {
-                    "name": "creater_email",
-                    "isArray": false,
-                    "type": "AWSEmail",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "notification_list": {
-                    "name": "notification_list",
-                    "isArray": false,
-                    "type": "AWSJSON",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "created": {
-                    "name": "created",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "updated": {
-                    "name": "updated",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "document_id": {
-                    "name": "document_id",
+                "appregistryID": {
+                    "name": "appregistryID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
                 },
-                "registered_app_id": {
-                    "name": "registered_app_id",
+                "agreementID": {
+                    "name": "agreementID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
+                },
+                "documentID": {
+                    "name": "documentID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                }
+            },
+            "syncable": true,
+            "pluralName": "EventLogs",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byAppRegistry",
+                        "fields": [
+                            "appregistryID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byAgreement",
+                        "fields": [
+                            "agreementID"
+                        ]
+                    }
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byDocument",
+                        "fields": [
+                            "documentID"
+                        ]
+                    }
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
+        "Agreement": {
+            "name": "Agreement",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "vendorId": {
+                    "name": "vendorId",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "status": {
+                    "name": "status",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "EventLogs": {
+                    "name": "EventLogs",
+                    "isArray": true,
+                    "type": {
+                        "model": "EventLog"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "agreementID"
+                    }
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -105,24 +191,6 @@ export const schema = {
                     "properties": {}
                 },
                 {
-                    "type": "key",
-                    "properties": {
-                        "name": "byDocuments",
-                        "fields": [
-                            "document_id"
-                        ]
-                    }
-                },
-                {
-                    "type": "key",
-                    "properties": {
-                        "name": "byRegisteredApps",
-                        "fields": [
-                            "registered_app_id"
-                        ]
-                    }
-                },
-                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -140,8 +208,8 @@ export const schema = {
                 }
             ]
         },
-        "Documents": {
-            "name": "Documents",
+        "Document": {
+            "name": "Document",
             "fields": {
                 "id": {
                     "name": "id",
@@ -150,67 +218,60 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "vendorId": {
+                    "name": "vendorId",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "source_document": {
-                    "name": "source_document",
+                "path": {
+                    "name": "path",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "agreement_image": {
-                    "name": "agreement_image",
+                "status": {
+                    "name": "status",
                     "isArray": false,
-                    "type": "AWSURL",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "created_by": {
-                    "name": "created_by",
-                    "isArray": false,
-                    "type": "AWSEmail",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "created": {
-                    "name": "created",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "updated": {
-                    "name": "updated",
-                    "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "registered_app_id": {
-                    "name": "registered_app_id",
+                "appregistryID": {
+                    "name": "appregistryID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
                 },
-                "Agreements": {
-                    "name": "Agreements",
+                "Agreement": {
+                    "name": "Agreement",
+                    "isArray": false,
+                    "type": {
+                        "model": "Agreement"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": "id",
+                        "targetName": "documentAgreementId"
+                    }
+                },
+                "EventLogs": {
+                    "name": "EventLogs",
                     "isArray": true,
                     "type": {
-                        "model": "Agreements"
+                        "model": "EventLog"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "document_id"
+                        "associatedWith": "documentID"
                     }
                 },
                 "createdAt": {
@@ -228,6 +289,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": [],
                     "isReadOnly": true
+                },
+                "documentAgreementId": {
+                    "name": "documentAgreementId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
                 }
             },
             "syncable": true,
@@ -240,9 +308,9 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byRegisteredApps",
+                        "name": "byAppRegistry",
                         "fields": [
-                            "registered_app_id"
+                            "appregistryID"
                         ]
                     }
                 },
@@ -264,8 +332,8 @@ export const schema = {
                 }
             ]
         },
-        "RegisteredApps": {
-            "name": "RegisteredApps",
+        "AppRegistry": {
+            "name": "AppRegistry",
             "fields": {
                 "id": {
                     "name": "id",
@@ -281,24 +349,17 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
-                "api_key": {
-                    "name": "api_key",
+                "description": {
+                    "name": "description",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
-                "created_by": {
-                    "name": "created_by",
+                "createdBy": {
+                    "name": "createdBy",
                     "isArray": false,
-                    "type": "AWSEmail",
-                    "isRequired": false,
-                    "attributes": []
-                },
-                "created": {
-                    "name": "created",
-                    "isArray": false,
-                    "type": "AWSDateTime",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -306,28 +367,28 @@ export const schema = {
                     "name": "Documents",
                     "isArray": true,
                     "type": {
-                        "model": "Documents"
+                        "model": "Document"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "registered_app_id"
+                        "associatedWith": "appregistryID"
                     }
                 },
-                "Agreements": {
-                    "name": "Agreements",
+                "EventLogs": {
+                    "name": "EventLogs",
                     "isArray": true,
                     "type": {
-                        "model": "Agreements"
+                        "model": "EventLog"
                     },
                     "isRequired": false,
                     "attributes": [],
                     "isArrayNullable": true,
                     "association": {
                         "connectionType": "HAS_MANY",
-                        "associatedWith": "registered_app_id"
+                        "associatedWith": "appregistryID"
                     }
                 },
                 "createdAt": {
@@ -348,7 +409,7 @@ export const schema = {
                 }
             },
             "syncable": true,
-            "pluralName": "RegisteredApps",
+            "pluralName": "AppRegistries",
             "attributes": [
                 {
                     "type": "model",
@@ -375,5 +436,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "dd1e3a04f3e496737fae578b19464418"
+    "version": "7d4c141c391ac3d2d8034c8983d1b742"
 };

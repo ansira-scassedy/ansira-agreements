@@ -1,9 +1,9 @@
 {
   "version": 1,
   "serviceConfiguration": {
-    "apiName": "ansiraagreementssrcagreementsadmin",
+    "apiName": "AnsiraAgreement",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-b9713b24-d024-49b2-b924-9705b5b38795/amplify/backend/api/ansiraagreementssrcagreementsadmin/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-0e7da22b-7a61-40c9-a962-4560ad4eb95f/amplify/backend/api/AnsiraAgreement/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",
