@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/agreements": {
+      "name": "/agreements",
+      "lambdaFunction": "APIAnsiraAgreements",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

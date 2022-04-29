@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/documents": {
+      "name": "/documents",
+      "lambdaFunction": "documentsAPI",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

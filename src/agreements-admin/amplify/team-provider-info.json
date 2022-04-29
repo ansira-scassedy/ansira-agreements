@@ -10,6 +10,26 @@
       "StackName": "amplify-ansiraagreement-staging-211337",
       "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreement-staging-211337/932557b0-c4dc-11ec-9e83-02591c40173c",
       "AmplifyAppId": "d9xogi9iji5r3"
+    },
+    "categories": {
+      "function": {
+        "documentsAPI": {
+          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
+          "s3Key": "amplify-builds/documentsAPI-562b3378656d41733943-build.zip"
+        },
+        "APIAgreements": {
+          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
+          "s3Key": "amplify-builds/APIAgreements-6c37635864435a696874-build.zip"
+        },
+        "APIDocuments": {
+          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
+          "s3Key": "amplify-builds/APIDocuments-362f6a68523437376948-build.zip"
+        },
+        "APIAnsiraAgreements": {
+          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
+          "s3Key": "amplify-builds/APIAnsiraAgreements-666e5164694752774d43-build.zip"
+        }
+      }
     }
   }
 }
