@@ -17,8 +17,7 @@ import { SearchIcon } from '@heroicons/react/solid'
 
 const navigation = [
   { name: 'Apps', href: '/apps', icon: HomeIcon, current: true },
-  { name: 'Documents', href: '/documents', icon: UsersIcon, current: false },
-  { name: 'Agreements', href: '/agreements', icon: FolderIcon, current: false },
+
 
 ]
 const userNavigation = [
