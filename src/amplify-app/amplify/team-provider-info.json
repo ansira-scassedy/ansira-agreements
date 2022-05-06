@@ -17,6 +17,9 @@
           "deploymentBucketName": "amplify-ansiraagreement-develop-211629-deployment",
           "s3Key": "amplify-builds/APIAnsiraAgreements-53454166716667525067-build.zip"
         }
+      },
+      "auth": {
+        "ansiraagreementssrcac501a5c8": {}
       }
     }
   },
