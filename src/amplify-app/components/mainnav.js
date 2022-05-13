@@ -1,29 +1,19 @@
 import { useRouter } from "next/router";
 import Link from "next/Link";
 
-import { useAuthenticator } from '@aws-amplify/ui-react';
 
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import { useState } from "react";
 import {
-  BellIcon,
-  ClockIcon,
-  CogIcon,
-  CreditCardIcon,
   DocumentReportIcon,
   HomeIcon,
-  MenuAlt1Icon,
   QuestionMarkCircleIcon,
-  ScaleIcon,
-  ShieldCheckIcon,
   UserGroupIcon,
-  XIcon,
 } from "@heroicons/react/outline";
 
 const secondaryNavigation = [
-  { name: "Settings", href: "#", icon: CogIcon },
+
   { name: "Help", href: "#", icon: QuestionMarkCircleIcon },
-  { name: "Privacy", href: "#", icon: ShieldCheckIcon },
+
 ];
 
 function classNames(...classes) {
