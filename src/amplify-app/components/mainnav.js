@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/Link";
 
+import { useAuthenticator } from '@aws-amplify/ui-react';
+
 import { Fragment, useState } from "react";
 import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
@@ -88,7 +90,7 @@ function MainNav() {
           </div>
         </div>
       </div> */}
-              <Transition.Root show={sidebarOpen} as={Fragment}>
+              {/* <Transition.Root show={sidebarOpen} as={Fragment}>
           <Dialog
             as="div"
             className="relative z-40 lg:hidden"
@@ -193,11 +195,11 @@ function MainNav() {
                 </Dialog.Panel>
               </Transition.Child>
               <div className="flex-shrink-0 w-14" aria-hidden="true">
-                {/* Dummy element to force sidebar to shrink to fit close icon */}
+
               </div>
             </div>
           </Dialog>
-        </Transition.Root>
+        </Transition.Root> */}
 
         {/* Static sidebar for desktop */}
         <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
@@ -216,10 +218,10 @@ function MainNav() {
             >
               <div className="px-2 space-y-1">
                 {navigation.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className={classNames(
+                  <Link href={item.href}
+                  key={item.name}>
+                   <a 
+                      className={classNames(
                       item.current
                         ? "bg-cyan-800 text-white"
                         : "text-cyan-100 hover:text-white hover:bg-cyan-600",
@@ -233,6 +235,7 @@ function MainNav() {
                     />
                     {item.name}
                   </a>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6 pt-6">

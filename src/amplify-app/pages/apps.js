@@ -1,85 +1,50 @@
 import Head from "next/head";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect} from "react";
+import { useAuthenticator, Authenticator } from '@aws-amplify/ui-react';
+
 
 import {
-  BellIcon,
-  ClockIcon,
-  CogIcon,
-  CreditCardIcon,
-  DocumentReportIcon,
-  HomeIcon,
-  MenuAlt1Icon,
-  QuestionMarkCircleIcon,
   ScaleIcon,
-  ShieldCheckIcon,
-  UserGroupIcon,
-  XIcon,
 } from "@heroicons/react/outline";
 import {
   CashIcon,
-  CheckCircleIcon,
-  ChevronDownIcon,
   ChevronRightIcon,
-  OfficeBuildingIcon,
-  SearchIcon,
 } from "@heroicons/react/solid";
 
 import AdminLayout from "../components/layout/admin";
 
 //components
-import FormSldeOver from "../components/appRegistry/edit_slideover";
+import EditSlideOver from "../components/appRegistry/edit_slideover";
 
 //amplify stuff
-import { DataStore } from "@aws-amplify/datastore";
-import { AppRegistry } from "../models";
-import EditSlideOver from "../components/appRegistry/edit_slideover";
+import { DataStore } from '@aws-amplify/datastore';
+import { AppRegistry } from '../models';
 //
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
-const cards = [
-  { name: "Account balance", href: "#", icon: ScaleIcon, amount: "$30,659.45" },
-  // More items...
-];
-const transactions = [
-  {
-    id: 1,
-    name: "Payment to Molly Sanders",
-    href: "#",
-    amount: "$20,000",
-    currency: "USD",
-    status: "success",
-    date: "July 11, 2020",
-    datetime: "2020-07-11",
-  },
-  // More transactions...
-];
-const statusStyles = {
-  success: "bg-green-100 text-green-800",
-  processing: "bg-yellow-100 text-yellow-800",
-  failed: "bg-gray-100 text-gray-800",
-};
 
 export default function Apps() {
   const [apps, setapps] = useState([]);
   const [open, setOpen] = useState(true);
-  useEffect(() => {
+  // const { user, signOut } = useAuthenticator((context) => [context.user]);
+
+    useEffect(() => {
     fetchApps();
     async function fetchApps() {
-      const appData = await DataStore.query(AppRegistry);
+      //todo check user role and get email or id to verify createdby
+      const appData = await DataStore.query(AppRegistry, a => a.createdBy("eq", "shawn.cassedy@ansira.com"));
       setapps(appData);
     }
+
     // const subscription = DataStore.observe(AppRegistry).subscribe(() => fetchApps())
     // return () => subscription.unsubscribe()
+
+
   }, []);
 
   return (
     <>
-    <EditSlideOver></EditSlideOver>
+    {/* <EditSlideOver></EditSlideOver> */}
     <AdminLayout>
-
       {/* Page header */}
       <div className="bg-white shadow">
   
@@ -88,7 +53,6 @@ export default function Apps() {
           <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
             <div className="flex-1 min-w-0">
               {/* Profile */}
-
             </div>
             <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4">
               <button
@@ -176,18 +140,18 @@ export default function Apps() {
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead>
                     <tr>
-                      <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Transaction
+                      <th className="px-6 py-2 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        App Name
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                        Amount
+                      <th className="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        Description
                       </th>
                       <th className="hidden px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider md:block">
                         Status
                       </th>
-                      <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      {/* <th className="px-6 py-3 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Date
-                      </th>
+                      </th> */}
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200">
@@ -209,24 +173,21 @@ export default function Apps() {
                             </a>
                           </div>
                         </td>
-                        <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                        <td className="px-6 py-4 text-left whitespace-nowrap text-sm text-gray-500">
                           <span className="text-gray-900 font-medium">
                             {app.description}{" "}
                           </span>
                         </td>
                         <td className="hidden px-6 py-4 whitespace-nowrap text-sm text-gray-500 md:block">
-                          {/* <span
-                                  className={classNames(
-                                    statusStyles[transaction.status],
-                                    "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium capitalize"
-                                  )}
-                                >
-                                  {transaction.status}
-                                </span> */}
+                        
+                        <span className={app.isActive ? 'inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800': 'inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800'}>
+                        {app.isActive ? 'Active': 'Inactive'}
+                        </span>
+  
                         </td>
-                        <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
+                        {/* <td className="px-6 py-4 text-right whitespace-nowrap text-sm text-gray-500">
                           <time dateTime={app.createdAt}>{app.createdAt}</time>
-                        </td>
+                        </td> */}
                       </tr>
                     ))}
                   </tbody>
