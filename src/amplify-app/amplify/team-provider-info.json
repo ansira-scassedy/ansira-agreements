@@ -18,11 +18,6 @@
         "userPoolGroups": {}
       },
       "function": {
-        "AnsiraAgreementsAuthPostConfirmation": {
-          "GROUP": "Developers",
-          "deploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
-          "s3Key": "amplify-builds/AnsiraAgreementsAuthPostConfirmation-61516c7579654b556861-build.zip"
-        },
         "AdminQueries60a6ddd4": {
           "deploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
           "s3Key": "amplify-builds/AdminQueries60a6ddd4-306d464b755258426e36-build.zip"
