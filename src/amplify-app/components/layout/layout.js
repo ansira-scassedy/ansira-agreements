@@ -17,7 +17,7 @@ import {
 // tailwindcss
 
 // components
-import SidebarNav from "../nav/sidebarNav";
+import SidebarNav from "../sidebarNav";
 
 //components
 
