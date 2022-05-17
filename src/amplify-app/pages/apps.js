@@ -1,48 +1,61 @@
-import Head from 'next/head'
-import { useState, useEffect } from 'react'
-
-import AdminLayout from '../components/layout/admin'
-
+import Head from "next/head";
+import { useState, useEffect } from "react";
+import Layout from "../components/layout/layout";
 
 //amplify stuff
-import { DataStore } from '@aws-amplify/datastore';
-import { AppRegistry } from '../models';
+import { DataStore } from "@aws-amplify/datastore";
+import { AppRegistry } from "../models";
 //
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function Apps() {
-  const [apps, setapps] = useState([])
+  const [apps, setapps] = useState([]);
+  const [open, setOpen] = useState(true);
+  // const { user, signOut } = useAuthenticator((context) => [context.user]);
+
   useEffect(() => {
-    fetchApps()
+    fetchApps();
     async function fetchApps() {
-      const appData = await DataStore.query(AppRegistry)
-      setapps(appData)
-    } 
-    const subscription = DataStore.observe(AppRegistry).subscribe(() => fetchApps())
-    return () => subscription.unsubscribe()
-  }, [])
+      //todo check user role and get email or id to verify createdby
+      const appData = await DataStore.query(AppRegistry, (a) =>
+        a.createdBy("eq", "shawn.cassedy@ansira.com")
+      );
+      setapps(appData);
+    }
+
+    // const subscription = DataStore.observe(AppRegistry).subscribe(() => fetchApps())
+    // return () => subscription.unsubscribe()
+  }, []);
 
   return (
-
-    <AdminLayout>
-      <main>
-        <div className="py-6">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-            <h1 className="text-2xl font-semibold text-gray-900">Apps</h1>
-          </div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
-          {
-          apps.map(apps => (
-            <p key={apps.id}>{apps.name}</p>
-        ))
-      }
+    <>
+      {/* <EditSlideOver></EditSlideOver> */}
+      <Layout>
+        {/* Page header */}
+        <div className="bg-white shadow">
+          <div className="px-4 sm:px-6 lg:max-w-6xl lg:mx-auto lg:px-8">
+            <div className="py-6 md:flex md:items-center md:justify-between lg:border-t lg:border-gray-200">
+              <div className="flex-1 min-w-0">
+                {/* Profile */}
+                <div className="flex items-center">
+                  <div>
+                    <div className="flex items-center">
+                      <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
+                        App Registry
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-6 flex space-x-3 md:mt-0 md:ml-4"></div>
+            </div>
           </div>
         </div>
-      </main>
-    </AdminLayout>
-
-  )
+        <div className="mt-8"></div>
+      </Layout>
+    </>
+  );
 }

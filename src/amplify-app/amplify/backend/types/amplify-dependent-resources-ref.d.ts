@@ -1,55 +1,42 @@
 export type AmplifyDependentResourcesAttributes = {
-    "api": {
-        "AnsiraAgreement": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
+    "auth": {
+        "userPoolGroups": {
+            "DeveloperGroupRole": "string",
+            "AdminGroupRole": "string"
         },
-        "AgreementsDocument": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "Documents": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "Agreements": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
-        },
-        "AnsiraAgreementAPI": {
-            "RootUrl": "string",
-            "ApiName": "string",
-            "ApiId": "string"
+        "AnsiraAgreementsAuth": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
+            "UserPoolId": "string",
+            "UserPoolArn": "string",
+            "UserPoolName": "string",
+            "AppClientIDWeb": "string",
+            "AppClientID": "string"
         }
     },
     "function": {
-        "documentsAPI": {
+        "AnsiraAgreementsAuthPostConfirmation": {
             "Name": "string",
             "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
+            "LambdaExecutionRole": "string",
+            "Region": "string"
         },
-        "APIDocuments": {
+        "AdminQueries60a6ddd4": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        }
+    },
+    "api": {
+        "AdminQueries": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
         },
-        "APIAgreements": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
-        },
-        "APIAnsiraAgreements": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
+        "ansiraagreements": {
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
         }
     }
 }

@@ -65,9 +65,11 @@ export declare class AppRegistry {
   readonly id: string;
   readonly name?: string | null;
   readonly description?: string | null;
+  readonly isActive?: boolean | null;
   readonly createdBy?: string | null;
-  readonly Documents?: (Document | null)[] | null;
+  readonly Documents?: (EventLog | null)[] | null;
   readonly EventLogs?: (EventLog | null)[] | null;
+  readonly apiKey?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<AppRegistry, AppRegistryMetaData>);

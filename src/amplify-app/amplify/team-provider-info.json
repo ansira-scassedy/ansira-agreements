@@ -1,33 +1,26 @@
 {
   "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-ansiraagreement-staging-211337-authRole",
-      "UnauthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreement-staging-211337-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreement-staging-211337-authRole",
+      "AuthRoleName": "amplify-ansiraagreements-staging-184641-authRole",
+      "UnauthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreements-staging-184641-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreements-staging-184641-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
-      "UnauthRoleName": "amplify-ansiraagreement-staging-211337-unauthRole",
-      "StackName": "amplify-ansiraagreement-staging-211337",
-      "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreement-staging-211337/932557b0-c4dc-11ec-9e83-02591c40173c",
-      "AmplifyAppId": "d9xogi9iji5r3"
+      "DeploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
+      "UnauthRoleName": "amplify-ansiraagreements-staging-184641-unauthRole",
+      "StackName": "amplify-ansiraagreements-staging-184641",
+      "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreements-staging-184641/5e22f1c0-cfc8-11ec-a4a7-0a3e7f42130a",
+      "AmplifyAppId": "d22zl0q6bxohdq",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ansiraagreements-staging-184641-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
+      "auth": {
+        "AnsiraAgreementsAuth": {},
+        "userPoolGroups": {}
+      },
       "function": {
-        "documentsAPI": {
-          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
-          "s3Key": "amplify-builds/documentsAPI-562b3378656d41733943-build.zip"
-        },
-        "APIAgreements": {
-          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
-          "s3Key": "amplify-builds/APIAgreements-6c37635864435a696874-build.zip"
-        },
-        "APIDocuments": {
-          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
-          "s3Key": "amplify-builds/APIDocuments-362f6a68523437376948-build.zip"
-        },
-        "APIAnsiraAgreements": {
-          "deploymentBucketName": "amplify-ansiraagreement-staging-211337-deployment",
-          "s3Key": "amplify-builds/APIAnsiraAgreements-666e5164694752774d43-build.zip"
+        "AdminQueries60a6ddd4": {
+          "deploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
+          "s3Key": "amplify-builds/AdminQueries60a6ddd4-306d464b755258426e36-build.zip"
         }
       }
     }

@@ -1,0 +1,39 @@
+type EventLog @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
+  id: ID!
+  Event: String
+  Request: String
+  Response: String
+  description: String
+  appregistryID: ID! @index(name: "byAppRegistry")
+  agreementID: ID! @index(name: "byAgreement")
+  documentID: ID! @index(name: "byDocument")
+}
+
+type Agreement @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
+  id: ID!
+  vendorId: String
+  status: String
+  EventLogs: [EventLog] @hasMany(indexName: "byAgreement", fields: ["id"])
+}
+
+type Document @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
+  id: ID!
+  vendorId: String
+  path: String
+  status: String
+  appregistryID: ID! @index(name: "byAppRegistry")
+  Agreement: Agreement @hasOne
+  EventLogs: [EventLog] @hasMany(indexName: "byDocument", fields: ["id"])
+}
+
+type AppRegistry @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
+  id: ID!
+  name: String
+  description: String
+  isActive: Boolean
+  createdBy: String
+  Documents: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
+  EventLogs: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
+  apiKey: String
+}
+ 
