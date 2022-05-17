@@ -19,17 +19,7 @@
     "AnsiraAgreementsAuth": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "AnsiraAgreementsAuthPostConfirmation",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "customAuth": false,
       "frontendAuthConfig": {
         "socialProviders": [],
@@ -54,11 +44,6 @@
     }
   },
   "function": {
-    "AnsiraAgreementsAuthPostConfirmation": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    },
     "AdminQueries60a6ddd4": {
       "service": "Lambda",
       "providerPlugin": "awscloudformation",
