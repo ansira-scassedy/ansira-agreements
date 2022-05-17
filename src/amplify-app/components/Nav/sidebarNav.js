@@ -1,7 +1,7 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRouter } from "next/router";
-import Link from "next/Link";
+import Link from "next/link";
 import {
   DocumentReportIcon,
   HomeIcon,
