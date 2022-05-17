@@ -174,7 +174,7 @@ const SidebarNav = () => {
             aria-label="Sidebar"
           >
             <div className="px-2 space-y-1">
-              {/* {navigation.map((item) => (
+              {navigation.map((item) => (
                 <Link href={item.href} key={item.name}>
                   <a
                     className={classNames(
@@ -192,11 +192,11 @@ const SidebarNav = () => {
                     {item.name}
                   </a>
                 </Link>
-              ))} */}
+              ))}
             </div>
             <div className="mt-6 pt-6">
               <div className="px-2 space-y-1">
-                {/* {secondaryNavigation.map((item) => (
+                {secondaryNavigation.map((item) => (
                   <Link href={item.href} key={item.name}>
                     <a
                       key={item.name}
@@ -210,7 +210,7 @@ const SidebarNav = () => {
                       {item.name}
                     </a>
                   </Link>
-                ))} */}
+                ))}
               </div>
             </div>
           </nav>
