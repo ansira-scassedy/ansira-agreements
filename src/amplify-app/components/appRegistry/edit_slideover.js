@@ -1,7 +1,13 @@
 import { Fragment, useState } from 'react'
+
+import { DataStore } from '@aws-amplify/datastore';
+import { AppRegistry } from './models';
+
+// Tailwind
+
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import { LinkIcon, PlusSmIcon, QuestionMarkCircleIcon } from '@heroicons/react/solid'
+
 
 
 
