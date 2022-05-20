@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
 
 import { DataStore } from '@aws-amplify/datastore';
-import { AppRegistry } from './models';
+import { AppRegistry } from '../../models';
 
 // Tailwind
 
