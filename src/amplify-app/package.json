@@ -11,7 +11,7 @@
   "dependencies": {
     "@aws-amplify/datastore": "^3.11.0",
     "@aws-amplify/ui-react": "^2.17.0",
-    "@headlessui/react": "^1.5.0",
+    "@headlessui/react": "^1.6.2",
     "@heroicons/react": "^1.0.6",
     "@tailwindcss/forms": "^0.4.0",
     "aws-amplify": "^4.3.21",

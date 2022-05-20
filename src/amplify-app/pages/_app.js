@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 
 import Amplify, {AuthModeStrategyType} from 'aws-amplify';
+import { Authenticator } from '@aws-amplify/ui-react';
 
 import config from '../aws-exports';
 
@@ -14,7 +15,7 @@ Amplify.configure({
 });
 
 function AnsiraAgreementsAdmin({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return <Authenticator.Provider><Component {...pageProps} /></Authenticator.Provider>
 }
 
 export default AnsiraAgreementsAdmin
