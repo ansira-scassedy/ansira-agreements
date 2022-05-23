@@ -15,12 +15,6 @@ export type AmplifyDependentResourcesAttributes = {
         }
     },
     "function": {
-        "AnsiraAgreementsAuthPostConfirmation": {
-            "Name": "string",
-            "Arn": "string",
-            "LambdaExecutionRole": "string",
-            "Region": "string"
-        },
         "AdminQueries60a6ddd4": {
             "Name": "string",
             "Arn": "string",

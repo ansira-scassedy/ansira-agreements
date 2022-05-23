@@ -25,18 +25,17 @@ export default function Apps() {
     fetchApps();
     async function fetchApps() {
       const authUser = await Auth.currentAuthenticatedUser();
-      const groups =
-        user.signInUserSession.accessToken.payload["cognito:groups"];
+      const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+      console.log(groups);
       let appData = "";
       if (groups.includes("Admin")) {
         appData = await DataStore.query(AppRegistry);
+        console.log(appData);
       } else {
         appData = await DataStore.query(AppRegistry, (a) =>
           a.createdBy("eq", user.attributes.email)
         );
       }
-      //todo check user role and get email or id to verify createdby
-
       setapps(appData);
     }
 

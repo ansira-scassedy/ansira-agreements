@@ -489,6 +489,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "webhookURI": {
+                    "name": "webhookURI",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -562,5 +569,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "21f00dae59c98cacf16d1dbfc50b353a"
+    "version": "baf3e754d96b66c6fcfe599139a3fbae"
 };
