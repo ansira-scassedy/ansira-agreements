@@ -35,5 +35,6 @@ type AppRegistry @model @auth(rules: [{allow: groups, groups: ["Admin"], operati
   Documents: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
   EventLogs: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
   apiKey: String
+  webhookURI: String
 }
  

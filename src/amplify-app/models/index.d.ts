@@ -70,6 +70,7 @@ export declare class AppRegistry {
   readonly Documents?: (EventLog | null)[] | null;
   readonly EventLogs?: (EventLog | null)[] | null;
   readonly apiKey?: string | null;
+  readonly webhookURI?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<AppRegistry, AppRegistryMetaData>);
