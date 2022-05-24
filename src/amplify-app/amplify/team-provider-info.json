@@ -1,4 +1,29 @@
 {
+  "develop": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-ansiraagreements-develop-151141-authRole",
+      "UnauthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreements-develop-151141-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::290857385602:role/amplify-ansiraagreements-develop-151141-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
+      "UnauthRoleName": "amplify-ansiraagreements-develop-151141-unauthRole",
+      "StackName": "amplify-ansiraagreements-develop-151141",
+      "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreements-develop-151141/a8309c50-d5f3-11ec-9e50-0a9cbd95f9e0",
+      "AmplifyAppId": "d22zl0q6bxohdq"
+    },
+    "categories": {
+      "auth": {
+        "userPoolGroups": {},
+        "AnsiraAgreementsAuth": {}
+      },
+      "function": {
+        "AdminQueries60a6ddd4": {
+          "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
+          "s3Key": "amplify-builds/AdminQueries60a6ddd4-704a4947626552506835-build.zip"
+        }
+      }
+    }
+  },
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-ansiraagreements-staging-184641-authRole",
