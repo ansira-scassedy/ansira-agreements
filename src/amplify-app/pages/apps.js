@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
 import Layout from "../components/layout/layout";
 
@@ -6,15 +5,10 @@ import Layout from "../components/layout/layout";
 import { DataStore } from "@aws-amplify/datastore";
 import { AppRegistry } from "../models";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { Auth } from "aws-amplify";
 //
 
 import AppsTable from "../components/appRegistry/apps_Table";
-import EditSlideOver from "../components/appRegistry/edit_slideover";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Apps() {
   const [apps, setapps] = useState([]);
@@ -24,7 +18,6 @@ export default function Apps() {
   useEffect(() => {
     fetchApps();
     async function fetchApps() {
-      const authUser = await Auth.currentAuthenticatedUser();
       const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
       console.log(groups);
       let appData = "";
