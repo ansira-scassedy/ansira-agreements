@@ -10,13 +10,6 @@ import { Switch } from "@headlessui/react";
 //components
 import EditSlideOver from "./edit_slideover";
 
-const statusStyles = {
-  active:
-    "inline-flex rounded-full bg-green-100 px-2 text-xs font-semibold leading-5 text-green-800",
-  inactive:
-    "inline-flex rounded-full bg-red-100 px-2 text-xs font-semibold leading-5 text-red-800",
-};
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
