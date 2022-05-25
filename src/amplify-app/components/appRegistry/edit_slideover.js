@@ -1,17 +1,45 @@
-import { Fragment, useState } from 'react'
+import React, { Fragment } from "react";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
-import { DataStore } from '@aws-amplify/datastore';
-import { AppRegistry } from '../../models';
+import { DataStore } from "@aws-amplify/datastore";
+import { AppRegistry } from "../../models";
 
 // Tailwind
 
-import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/outline'
-
-
+import { Dialog, Transition } from "@headlessui/react";
+import { XIcon } from "@heroicons/react/outline";
 
 
 export default function EditSlideOver(props) {
+  //const [open, setOpen] = useState(false);
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      description: "",
+      webhookURI: "",
+    },
+    validationSchema: yup.object({
+      name: yup.string().required("Required"),
+      description: yup.string().required("Required"),
+      webhookURI: yup.string().url().required("Required"),
+    }),
+    onSubmit: async (values) => {
+      console.log(values);
+
+      await DataStore.save(
+        new AppRegistry({
+          name: values.name,
+          description: values.description,
+          isActive: true,
+          createdBy: props.userEmail,
+          webhookURI: values.webhookURI,
+        })
+      );
+      resetForm();
+    }
+  });
 
   return (
     <Transition.Root show={props.open} as={Fragment}>
@@ -31,16 +59,21 @@ export default function EditSlideOver(props) {
                 leaveTo="translate-x-full"
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
-                  <form className="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl">
+                  <form
+                    onSubmit={formik.handleSubmit}
+                    className="flex h-full flex-col divide-y divide-gray-200 bg-white shadow-xl"
+                  >
                     <div className="h-0 flex-1 overflow-y-auto">
                       <div className="bg-cyan-700 py-6 px-4 sm:px-6">
                         <div className="flex items-center justify-between">
-                          <Dialog.Title className="text-lg font-medium text-white">Add App</Dialog.Title>
+                          <Dialog.Title className="text-lg font-medium text-white">
+                            Add App
+                          </Dialog.Title>
                           <div className="ml-3 flex h-7 items-center">
                             <button
                               type="button"
                               className="rounded-md bg-cyan-700 text-cyan-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-                              onClick={() => props.setOpen(false)}
+                              onClick={() => {props.setOpen(false); formik.resetForm()}}
                             >
                               <span className="sr-only">Close panel</span>
                               <XIcon className="h-6 w-6" aria-hidden="true" />
@@ -48,32 +81,44 @@ export default function EditSlideOver(props) {
                           </div>
                         </div>
                         <div className="mt-1">
-                          <p className="text-sm text-cyan-300">
-                            
-                          </p>
+                          <p className="text-sm text-cyan-300"></p>
                         </div>
                       </div>
                       <div className="flex flex-1 flex-col justify-between">
                         <div className="divide-y divide-gray-200 px-4 sm:px-6">
                           <div className="space-y-6 pt-6 pb-5">
                             <div>
-                              <label htmlFor="project-name" className="block text-sm font-medium text-gray-900">
-                                {' '}
-                                App name{' '}
+                              <label
+                                htmlFor="project-name"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                {" "}
+                                App name{" "}
                               </label>
                               <div className="mt-1">
                                 <input
                                   type="text"
-                                  name="project-name"
-                                  id="project-name"
+                                  name="name"
+                                  id="name"
                                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                                  placeholder="App Name"
+                                  value={formik.values.name}
+                                  {...formik.getFieldProps("name")}
                                 />
+                                {formik.touched.name && formik.errors.name ? (
+                                  <p className="text-red-500 text-xs italic">
+                                    {formik.errors.name}
+                                  </p>
+                                ) : null}
                               </div>
                             </div>
                             <div>
-                              <label htmlFor="description" className="block text-sm font-medium text-gray-900">
-                                {' '}
-                                Description{' '}
+                              <label
+                                htmlFor="description"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                {" "}
+                                Description{" "}
                               </label>
                               <div className="mt-1">
                                 <textarea
@@ -81,118 +126,46 @@ export default function EditSlideOver(props) {
                                   name="description"
                                   rows={4}
                                   className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
-                                  defaultValue={''}
+                                  value={formik.values.description}
+                                  {...formik.getFieldProps("description")}
                                 />
+                                {formik.touched.description &&
+                                formik.errors.description ? (
+                                  <p className="text-red-500 text-xs italic">
+                                    {formik.errors.description}
+                                  </p>
+                                ) : null}
                               </div>
                             </div>
                             <div>
-                              <label htmlFor="project-name" className="block text-sm font-medium text-gray-900">
-                                {' '}
-                                Web Hook URI{' '}
+                              <label
+                                htmlFor="project-name"
+                                className="block text-sm font-medium text-gray-900"
+                              >
+                                {" "}
+                                Web Hook URI{" "}
                               </label>
                               <div className="mt-1">
                                 <input
                                   type="text"
-                                  name="project-name"
-                                  id="project-name"
+                                  name="webhookURI"
+                                  id="webhookURI"
                                   className="block w-full rounded-md border-gray-300 shadow-sm focus:border-cyan-500 focus:ring-cyan-500 sm:text-sm"
+                                  placeholder="Web Hook URI"
+                                  value={formik.values.webhookURI}
+                                  {...formik.getFieldProps("webhookURI")}
                                 />
+                                {formik.touched.webhookURI &&
+                                formik.errors.webhookURI ? (
+                                  <p className="text-red-500 text-xs italic">
+                                    {formik.errors.webhookURI}
+                                  </p>
+                                ) : null}
                               </div>
                             </div>
- 
-                            {/* <fieldset>
-                              <legend className="text-sm font-medium text-gray-900">Privacy</legend>
-                              <div className="mt-2 space-y-5">
-                                <div className="relative flex items-start">
-                                  <div className="absolute flex h-5 items-center">
-                                    <input
-                                      id="privacy-public"
-                                      name="privacy"
-                                      aria-describedby="privacy-public-description"
-                                      type="radio"
-                                      className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
-                                      defaultChecked
-                                    />
-                                  </div>
-                                  <div className="pl-7 text-sm">
-                                    <label htmlFor="privacy-public" className="font-medium text-gray-900">
-                                      {' '}
-                                      Public access{' '}
-                                    </label>
-                                    <p id="privacy-public-description" className="text-gray-500">
-                                      Everyone with the link will see this project.
-                                    </p>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div className="relative flex items-start">
-                                    <div className="absolute flex h-5 items-center">
-                                      <input
-                                        id="privacy-private-to-project"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-project-description"
-                                        type="radio"
-                                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
-                                      />
-                                    </div>
-                                    <div className="pl-7 text-sm">
-                                      <label htmlFor="privacy-private-to-project" className="font-medium text-gray-900">
-                                        {' '}
-                                        Private to project members{' '}
-                                      </label>
-                                      <p id="privacy-private-to-project-description" className="text-gray-500">
-                                        Only members of this project would be able to access.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div>
-                                  <div className="relative flex items-start">
-                                    <div className="absolute flex h-5 items-center">
-                                      <input
-                                        id="privacy-private"
-                                        name="privacy"
-                                        aria-describedby="privacy-private-to-project-description"
-                                        type="radio"
-                                        className="h-4 w-4 border-gray-300 text-cyan-600 focus:ring-cyan-500"
-                                      />
-                                    </div>
-                                    <div className="pl-7 text-sm">
-                                      <label htmlFor="privacy-private" className="font-medium text-gray-900">
-                                        {' '}
-                                        Private to you{' '}
-                                      </label>
-                                      <p id="privacy-private-description" className="text-gray-500">
-                                        You are the only one able to access this project.
-                                      </p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </fieldset> */}
                           </div>
                           <div className="pt-4 pb-6">
-                            {/* <div className="flex text-sm">
-                              <a
-                                href="#"
-                                className="group inline-flex items-center font-medium text-cyan-600 hover:text-cyan-900"
-                              >
-                                <LinkIcon
-                                  className="h-5 w-5 text-cyan-500 group-hover:text-cyan-900"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2"> Copy link </span>
-                              </a>
-                            </div> */}
-                            <div className="mt-4 flex text-sm">
-                              {/* <a href="#" className="group inline-flex items-center text-gray-500 hover:text-gray-900">
-                                <QuestionMarkCircleIcon
-                                  className="h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                                  aria-hidden="true"
-                                />
-                                <span className="ml-2"> Learn more about sharing </span>
-                              </a> */}
-                            </div>
+                            <div className="mt-4 flex text-sm"></div>
                           </div>
                         </div>
                       </div>
@@ -201,7 +174,7 @@ export default function EditSlideOver(props) {
                       <button
                         type="button"
                         className="rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2"
-                        onClick={() => props.setOpen(false)}
+                        onClick={() => {props.setOpen(false); formik.resetForm()}}
                       >
                         Cancel
                       </button>
@@ -220,5 +193,5 @@ export default function EditSlideOver(props) {
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

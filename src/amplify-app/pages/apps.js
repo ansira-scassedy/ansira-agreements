@@ -12,7 +12,6 @@ import AppsTable from "../components/appRegistry/apps_Table";
 
 export default function Apps() {
   const [apps, setapps] = useState([]);
-  const [open, setOpen] = useState(true);
   const { user } = useAuthenticator((context) => [context.user]);
 
   useEffect(() => {
@@ -40,7 +39,6 @@ export default function Apps() {
 
   return (
     <>
-      {/* <EditSlideOver></EditSlideOver> */}
       <Layout>
         {/* Page header */}
         <div className="bg-white shadow">
@@ -66,7 +64,7 @@ export default function Apps() {
         </div>
 
         <div className="mt-8">
-          <AppsTable apps={apps} />
+          <AppsTable apps={apps} userEmail={user.attributes.email} />
         </div>
       </Layout>
     </>
