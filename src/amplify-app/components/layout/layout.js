@@ -8,32 +8,26 @@ import "@aws-amplify/ui-react/styles.css";
 // amplify
 
 // tailwindcss
-import { MenuAlt1Icon, ScaleIcon } from "@heroicons/react/outline";
-import {
-  CashIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from "@heroicons/react/solid";
+import { MenuAlt1Icon } from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 // tailwindcss
 
 // components
 import SidebarNav from "../sidebarNav";
-import EditSlideOver from "../appRegistry/edit_slideover";
-
 //components
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Layout({ children, isPassedToWithAuthenticator, signOut, user }) {
+function Layout({ children, signOut, user }) {
   // console.log(user.attributes.email)
   return (
     <>
       <Head>
         <title>Ansira Agreement</title>
       </Head>
-  
+
       <div className="min-h-full">
         <SidebarNav />
 
@@ -75,32 +69,6 @@ function Layout({ children, isPassedToWithAuthenticator, signOut, user }) {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      {/* <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Your Profile
-                            </a>
-                          )}
-                        </Menu.Item>
-                        <Menu.Item>
-                          {({ active }) => (
-                            <a
-                              href="#"
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
-                              )}
-                            >
-                              Settings
-                            </a>
-                          )}
-                        </Menu.Item> */}
                       <Menu.Item>
                         {({ active }) => (
                           <a
