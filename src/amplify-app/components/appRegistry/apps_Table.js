@@ -8,7 +8,7 @@ import { AppRegistry } from "../../models";
 import { Switch } from "@headlessui/react";
 
 //components
-import EditSlideOver from "./edit_slideover";
+import SlideOverFrom from "./slideoverform";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -151,11 +151,11 @@ export default function AppsTable(props) {
           </div>
         </div>
       </div>
-      <EditSlideOver
+      <SlideOverFrom
         open={open}
         setOpen={setOpen}
         userEmail={props.userEmail}
-      ></EditSlideOver>
+      ></SlideOverFrom>
     </>
   );
 }
