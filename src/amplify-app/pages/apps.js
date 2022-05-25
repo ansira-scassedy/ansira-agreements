@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useState, useEffect } from "react";
 import Layout from "../components/layout/layout";
 
@@ -6,34 +5,29 @@ import Layout from "../components/layout/layout";
 import { DataStore } from "@aws-amplify/datastore";
 import { AppRegistry } from "../models";
 import { useAuthenticator } from "@aws-amplify/ui-react";
-import { Auth } from "aws-amplify";
 //
 
 import AppsTable from "../components/appRegistry/apps_Table";
-import EditSlideOver from "../components/appRegistry/edit_slideover";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
 
 export default function Apps() {
   const [apps, setapps] = useState([]);
-  const [open, setOpen] = useState(true);
   const { user } = useAuthenticator((context) => [context.user]);
+  const [userEmail, setUserEmail] = useState(null);
 
   useEffect(() => {
     fetchApps();
     async function fetchApps() {
-      const authUser = await Auth.currentAuthenticatedUser();
+
       const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
-      console.log(groups);
+      setUserEmail(user.attributes.email);
       let appData = "";
       if (groups.includes("Admin")) {
         appData = await DataStore.query(AppRegistry);
-        console.log(appData);
+
       } else {
         appData = await DataStore.query(AppRegistry, (a) =>
-          a.createdBy("eq", user.attributes.email)
+          a.createdBy("eq", userEmail)
         );
       }
       setapps(appData);
@@ -47,7 +41,6 @@ export default function Apps() {
 
   return (
     <>
-      {/* <EditSlideOver></EditSlideOver> */}
       <Layout>
         {/* Page header */}
         <div className="bg-white shadow">
@@ -73,7 +66,7 @@ export default function Apps() {
         </div>
 
         <div className="mt-8">
-          <AppsTable apps={apps} />
+          <AppsTable apps={apps} userEmail={userEmail} />
         </div>
       </Layout>
     </>
