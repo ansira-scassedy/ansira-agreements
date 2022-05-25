@@ -13,19 +13,21 @@ import AppsTable from "../components/appRegistry/apps_Table";
 export default function Apps() {
   const [apps, setapps] = useState([]);
   const { user } = useAuthenticator((context) => [context.user]);
+  const [userEmail, setUserEmail] = useState(null);
 
   useEffect(() => {
     fetchApps();
     async function fetchApps() {
+
       const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
-      console.log(groups);
+      setUserEmail(user.attributes.email);
       let appData = "";
       if (groups.includes("Admin")) {
         appData = await DataStore.query(AppRegistry);
-        console.log(appData);
+
       } else {
         appData = await DataStore.query(AppRegistry, (a) =>
-          a.createdBy("eq", user.attributes.email)
+          a.createdBy("eq", userEmail)
         );
       }
       setapps(appData);
@@ -64,7 +66,7 @@ export default function Apps() {
         </div>
 
         <div className="mt-8">
-          <AppsTable apps={apps} userEmail={user.attributes.email} />
+          <AppsTable apps={apps} userEmail={userEmail} />
         </div>
       </Layout>
     </>
