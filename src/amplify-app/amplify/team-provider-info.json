@@ -25,7 +25,7 @@
         "AnsiraAgreementsAuthPostConfirmation": {
           "GROUP": "Developer",
           "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
-          "s3Key": "amplify-builds/AnsiraAgreementsAuthPostConfirmation-4f50366566335a31502b-build.zip"
+          "s3Key": "amplify-builds/AnsiraAgreementsAuthPostConfirmation-4a485978427573545554-build.zip"
         }
       }
     }
