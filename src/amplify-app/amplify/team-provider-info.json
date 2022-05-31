@@ -52,6 +52,10 @@
         "AdminQueries60a6ddd4": {
           "deploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
           "s3Key": "amplify-builds/AdminQueries60a6ddd4-704a4947626552506835-build.zip"
+        },
+        "AnsiraAgreementsAuthPostConfirmation": {
+          "deploymentBucketName": "amplify-ansiraagreements-staging-184641-deployment",
+          "s3Key": "amplify-builds/AnsiraAgreementsAuthPostConfirmation-316e52704f5252365270-build.zip"
         }
       }
     }
