@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-ansiraagreements-develop-151141-unauthRole",
       "StackName": "amplify-ansiraagreements-develop-151141",
       "StackId": "arn:aws:cloudformation:us-east-2:290857385602:stack/amplify-ansiraagreements-develop-151141/a8309c50-d5f3-11ec-9e50-0a9cbd95f9e0",
-      "AmplifyAppId": "d22zl0q6bxohdq"
+      "AmplifyAppId": "d22zl0q6bxohdq",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-ansiraagreements-develop-151141-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -20,6 +21,11 @@
         "AdminQueries60a6ddd4": {
           "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
           "s3Key": "amplify-builds/AdminQueries60a6ddd4-704a4947626552506835-build.zip"
+        },
+        "AnsiraAgreementsAuthPostConfirmation": {
+          "GROUP": "Developer",
+          "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
+          "s3Key": "amplify-builds/AnsiraAgreementsAuthPostConfirmation-4f50366566335a31502b-build.zip"
         }
       }
     }

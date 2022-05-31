@@ -43,7 +43,11 @@
     ],
     "userPoolGroups": false,
     "adminQueries": true,
-    "triggers": {},
+    "triggers": {
+      "PostConfirmation": [
+        "add-to-group"
+      ]
+    },
     "hostedUI": false,
     "userPoolGroupList": [
       "Developer",
@@ -66,11 +70,24 @@
       ]
     },
     "breakCircularDependency": true,
-    "dependsOn": [],
-    "permissions": [],
+    "dependsOn": [
+      {
+        "category": "function",
+        "resourceName": "AnsiraAgreementsAuthPostConfirmation",
+        "triggerProvider": "Cognito",
+        "attributes": [
+          "Arn",
+          "Name"
+        ]
+      }
+    ],
+    "permissions": [
+      "{\n  \"policyName\": \"AddToGroupCognito\",\n  \"trigger\": \"PostConfirmation\",\n  \"effect\": \"Allow\",\n  \"actions\": [\n    \"cognito-idp:AdminAddUserToGroup\",\n    \"cognito-idp:GetGroup\",\n    \"cognito-idp:CreateGroup\"\n  ],\n  \"resource\": {\n    \"paramType\": \"!GetAtt\",\n    \"keys\": [\n      \"UserPool\",\n      \"Arn\"\n    ]\n  }\n}"
+    ],
     "authProviders": [],
     "parentStack": {
       "Ref": "AWS::StackId"
-    }
+    },
+    "authTriggerConnections": "[\n  {\n    \"triggerType\": \"PostConfirmation\",\n    \"lambdaFunctionName\": \"AnsiraAgreementsAuthPostConfirmation\"\n  }\n]"
   }
 }
