@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "paths": {
+    "/agreement": {
+      "name": "/agreement",
+      "lambdaFunction": "agreementsAPI",
+      "permissions": {
+        "groups": {
+          "Developer": [
+            "create",
+            "read",
+            "update",
+            "delete"
+          ]
+        },
+        "setting": "private"
+      }
+    }
+  }
+}
