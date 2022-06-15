@@ -1,3 +1,9 @@
+type AppTokens @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  token_result: AWSJSON
+  AppRegistry: AppRegistry @hasOne
+}
+
 type EventLog @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
   id: ID!
   Event: String
