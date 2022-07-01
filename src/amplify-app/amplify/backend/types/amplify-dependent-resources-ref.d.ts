@@ -33,7 +33,7 @@ export type AmplifyDependentResourcesAttributes = {
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "adobeauthflow": {
+        "TokenManager": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -55,7 +55,7 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiName": "string",
             "ApiId": "string"
         },
-        "adobeauthflow": {
+        "TokenManager": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

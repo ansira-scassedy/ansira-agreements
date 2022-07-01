@@ -2,7 +2,7 @@
   "version": "1",
   "cognitoConfig": {
     "identityPoolName": "AnsiraAgreementsIdentity",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "ansira1ce2922b",
     "userPoolName": "AnsiraAgreementsUsers",
     "autoVerifiedAttributes": [

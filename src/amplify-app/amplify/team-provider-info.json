@@ -31,9 +31,9 @@
           "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
           "s3Key": "amplify-builds/agreementsAPI-452b335267336577452b-build.zip"
         },
-        "adobeauthflow": {
+        "TokenManager": {
           "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
-          "s3Key": "amplify-builds/adobeauthflow-516c6f74433354656a30-build.zip"
+          "s3Key": "amplify-builds/TokenManager-434f3471394f44743957-build.zip"
         }
       }
     }

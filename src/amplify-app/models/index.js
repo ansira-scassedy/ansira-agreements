@@ -4,12 +4,12 @@ import { schema } from './schema';
 
 
 
-const { AppTokens, AppRegistry, EventLog, Agreement, Document } = initSchema(schema);
+const { TokenManager, EventLog, Agreement, Document, AppRegistry } = initSchema(schema);
 
 export {
-  AppTokens,
-  AppRegistry,
+  TokenManager,
   EventLog,
   Agreement,
-  Document
+  Document,
+  AppRegistry
 };

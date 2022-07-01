@@ -4,11 +4,7 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type AppTokensMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type AppRegistryMetaData = {
+type TokenManagerMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
@@ -24,31 +20,20 @@ type DocumentMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class AppTokens {
-  readonly id: string;
-  readonly token_result?: string | null;
-  readonly AppRegistry?: AppRegistry | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  readonly appTokensAppRegistryId?: string | null;
-  constructor(init: ModelInit<AppTokens, AppTokensMetaData>);
-  static copyOf(source: AppTokens, mutator: (draft: MutableModel<AppTokens, AppTokensMetaData>) => MutableModel<AppTokens, AppTokensMetaData> | void): AppTokens;
+type AppRegistryMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class AppRegistry {
+export declare class TokenManager {
   readonly id: string;
-  readonly name?: string | null;
-  readonly description?: string | null;
-  readonly isActive?: boolean | null;
-  readonly createdBy?: string | null;
-  readonly Documents?: (EventLog | null)[] | null;
-  readonly EventLogs?: (EventLog | null)[] | null;
-  readonly apiKey?: string | null;
-  readonly webhookURI?: string | null;
+  readonly token?: string | null;
+  readonly refeshToken?: string | null;
+  readonly dateCreated?: string | null;
+  readonly appregistryID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  constructor(init: ModelInit<AppRegistry, AppRegistryMetaData>);
-  static copyOf(source: AppRegistry, mutator: (draft: MutableModel<AppRegistry, AppRegistryMetaData>) => MutableModel<AppRegistry, AppRegistryMetaData> | void): AppRegistry;
+  constructor(init: ModelInit<TokenManager, TokenManagerMetaData>);
+  static copyOf(source: TokenManager, mutator: (draft: MutableModel<TokenManager, TokenManagerMetaData>) => MutableModel<TokenManager, TokenManagerMetaData> | void): TokenManager;
 }
 
 export declare class EventLog {
@@ -90,4 +75,21 @@ export declare class Document {
   readonly documentAgreementId?: string | null;
   constructor(init: ModelInit<Document, DocumentMetaData>);
   static copyOf(source: Document, mutator: (draft: MutableModel<Document, DocumentMetaData>) => MutableModel<Document, DocumentMetaData> | void): Document;
+}
+
+export declare class AppRegistry {
+  readonly id: string;
+  readonly name?: string | null;
+  readonly description?: string | null;
+  readonly isActive?: boolean | null;
+  readonly createdBy?: string | null;
+  readonly Documents?: (TokenManager | null)[] | null;
+  readonly EventLogs?: (TokenManager | null)[] | null;
+  readonly apiKey?: string | null;
+  readonly webhookURI?: string | null;
+  readonly TokenManagers?: (TokenManager | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<AppRegistry, AppRegistryMetaData>);
+  static copyOf(source: AppRegistry, mutator: (draft: MutableModel<AppRegistry, AppRegistryMetaData>) => MutableModel<AppRegistry, AppRegistryMetaData> | void): AppRegistry;
 }

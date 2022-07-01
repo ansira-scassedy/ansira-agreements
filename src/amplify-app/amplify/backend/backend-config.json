@@ -78,7 +78,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "adobeauthflow": {
+    "TokenManager": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -163,13 +163,13 @@
         }
       ]
     },
-    "adobeauthflow": {
+    "TokenManager": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "adobeauthflow",
+          "resourceName": "TokenManager",
           "attributes": [
             "Name",
             "Arn"
@@ -177,5 +177,6 @@
         }
       ]
     }
-  }
+  },
+  "storage": {}
 }

@@ -1,6 +1,114 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateAppTokens = /* GraphQL */ `
+  subscription OnCreateAppTokens {
+    onCreateAppTokens {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
+export const onUpdateAppTokens = /* GraphQL */ `
+  subscription OnUpdateAppTokens {
+    onUpdateAppTokens {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
+export const onDeleteAppTokens = /* GraphQL */ `
+  subscription OnDeleteAppTokens {
+    onDeleteAppTokens {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
 export const onCreateEventLog = /* GraphQL */ `
   subscription OnCreateEventLog {
     onCreateEventLog {
@@ -318,16 +426,18 @@ export const onCreateAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -351,6 +461,8 @@ export const onCreateAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version
@@ -370,16 +482,18 @@ export const onUpdateAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -403,6 +517,8 @@ export const onUpdateAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version
@@ -422,16 +538,18 @@ export const onDeleteAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -455,6 +573,8 @@ export const onDeleteAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version

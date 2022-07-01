@@ -47,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "adobeauthflow",
+            "TokenManager",
             {
               "Fn::Join": [
                 "",
                 [
-                  "adobeauthflow",
+                  "TokenManager",
                   "-",
                   {
                     "Ref": "env"
@@ -89,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "ansiraagreementsLambdaRole274f0081",
+            "ansiraagreementsLambdaRoledc369f50",
             {
               "Fn::Join": [
                 "",
                 [
-                  "ansiraagreementsLambdaRole274f0081",
+                  "ansiraagreementsLambdaRoledc369f50",
                   "-",
                   {
                     "Ref": "env"

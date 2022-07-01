@@ -1,6 +1,123 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createAppTokens = /* GraphQL */ `
+  mutation CreateAppTokens(
+    $input: CreateAppTokensInput!
+    $condition: ModelAppTokensConditionInput
+  ) {
+    createAppTokens(input: $input, condition: $condition) {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
+export const updateAppTokens = /* GraphQL */ `
+  mutation UpdateAppTokens(
+    $input: UpdateAppTokensInput!
+    $condition: ModelAppTokensConditionInput
+  ) {
+    updateAppTokens(input: $input, condition: $condition) {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
+export const deleteAppTokens = /* GraphQL */ `
+  mutation DeleteAppTokens(
+    $input: DeleteAppTokensInput!
+    $condition: ModelAppTokensConditionInput
+  ) {
+    deleteAppTokens(input: $input, condition: $condition) {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
 export const createEventLog = /* GraphQL */ `
   mutation CreateEventLog(
     $input: CreateEventLogInput!
@@ -348,16 +465,18 @@ export const createAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -381,6 +500,8 @@ export const createAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version
@@ -403,16 +524,18 @@ export const updateAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -436,6 +559,8 @@ export const updateAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version
@@ -458,16 +583,18 @@ export const deleteAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -491,6 +618,8 @@ export const deleteAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version

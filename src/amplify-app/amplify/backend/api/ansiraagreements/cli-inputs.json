@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "ansiraagreements",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-a6c4f859-b01e-49e4-ad2d-5eba1e1046ef/amplify/backend/api/ansiraagreements/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-36da5f3a-713a-4248-97a7-6665b419499f/amplify/backend/api/ansiraagreements/schema.graphql",
     "defaultAuthType": {
       "mode": "AMAZON_COGNITO_USER_POOLS",
       "cognitoUserPoolId": "authAnsiraAgreementsAuth"

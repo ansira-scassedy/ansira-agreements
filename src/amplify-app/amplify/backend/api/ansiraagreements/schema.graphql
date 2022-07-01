@@ -1,7 +1,9 @@
-type AppTokens @model @auth(rules: [{allow: private}]) {
+type TokenManager @model @auth(rules: [{allow: private}]) {
   id: ID!
-  token_result: AWSJSON
-  AppRegistry: AppRegistry @hasOne
+  token: String
+  refeshToken: String
+  dateCreated: AWSDateTime
+  appregistryID: ID! @index(name: "byAppRegistry")
 }
 
 type EventLog @model @auth(rules: [{allow: groups, groups: ["Admin"], operations: [read, create, update, delete]}, {allow: groups, groups: ["Developer"], operations: [read, create, update, delete]}, {allow: private}]) {
@@ -38,8 +40,10 @@ type AppRegistry @model @auth(rules: [{allow: groups, groups: ["Admin"], operati
   description: String
   isActive: Boolean
   createdBy: String
-  Documents: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
-  EventLogs: [EventLog] @hasMany(indexName: "byAppRegistry", fields: ["id"])
+  Documents: [TokenManager] @hasMany(indexName: "byAppRegistry", fields: ["id"])
+  EventLogs: [TokenManager] @hasMany(indexName: "byAppRegistry", fields: ["id"])
   apiKey: String
   webhookURI: String
-} 
+  TokenManagers: [TokenManager] @hasMany(indexName: "byAppRegistry", fields: ["id"])
+}
+ 

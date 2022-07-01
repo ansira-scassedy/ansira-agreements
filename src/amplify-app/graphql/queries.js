@@ -1,6 +1,120 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getAppTokens = /* GraphQL */ `
+  query GetAppTokens($id: ID!) {
+    getAppTokens(id: $id) {
+      id
+      token_result
+      AppRegistry {
+        id
+        name
+        description
+        isActive
+        createdBy
+        Documents {
+          nextToken
+          startedAt
+        }
+        EventLogs {
+          nextToken
+          startedAt
+        }
+        apiKey
+        webhookURI
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      appTokensAppRegistryId
+    }
+  }
+`;
+export const listAppTokens = /* GraphQL */ `
+  query ListAppTokens(
+    $filter: ModelAppTokensFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listAppTokens(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        token_result
+        AppRegistry {
+          id
+          name
+          description
+          isActive
+          createdBy
+          apiKey
+          webhookURI
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        appTokensAppRegistryId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncAppTokens = /* GraphQL */ `
+  query SyncAppTokens(
+    $filter: ModelAppTokensFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncAppTokens(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        token_result
+        AppRegistry {
+          id
+          name
+          description
+          isActive
+          createdBy
+          apiKey
+          webhookURI
+          createdAt
+          updatedAt
+          _version
+          _deleted
+          _lastChangedAt
+        }
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        appTokensAppRegistryId
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getEventLog = /* GraphQL */ `
   query GetEventLog($id: ID!) {
     getEventLog(id: $id) {
@@ -316,16 +430,18 @@ export const getAppRegistry = /* GraphQL */ `
       Documents {
         items {
           id
-          vendorId
-          path
-          status
+          Event
+          Request
+          Response
+          description
           appregistryID
+          agreementID
+          documentID
           createdAt
           updatedAt
           _version
           _deleted
           _lastChangedAt
-          documentAgreementId
         }
         nextToken
         startedAt
@@ -349,6 +465,8 @@ export const getAppRegistry = /* GraphQL */ `
         nextToken
         startedAt
       }
+      apiKey
+      webhookURI
       createdAt
       updatedAt
       _version
@@ -378,6 +496,8 @@ export const listAppRegistries = /* GraphQL */ `
           nextToken
           startedAt
         }
+        apiKey
+        webhookURI
         createdAt
         updatedAt
         _version
@@ -416,6 +536,8 @@ export const syncAppRegistries = /* GraphQL */ `
           nextToken
           startedAt
         }
+        apiKey
+        webhookURI
         createdAt
         updatedAt
         _version

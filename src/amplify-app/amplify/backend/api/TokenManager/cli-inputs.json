@@ -1,9 +1,9 @@
 {
   "version": 1,
   "paths": {
-    "/token": {
-      "name": "/token",
-      "lambdaFunction": "adobeauthflow",
+    "/tokens": {
+      "name": "/tokens",
+      "lambdaFunction": "TokenManager",
       "permissions": {
         "setting": "open"
       }
