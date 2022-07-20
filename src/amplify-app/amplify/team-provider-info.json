@@ -33,7 +33,7 @@
         },
         "TokenManager": {
           "deploymentBucketName": "amplify-ansiraagreements-develop-151141-deployment",
-          "s3Key": "amplify-builds/TokenManager-434f3471394f44743957-build.zip"
+          "s3Key": "amplify-builds/TokenManager-364b3351317742315043-build.zip"
         }
       }
     }
